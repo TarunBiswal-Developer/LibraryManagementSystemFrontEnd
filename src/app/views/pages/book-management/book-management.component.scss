@@ -1,0 +1,57 @@
+/* Breadcrumb Styles */
+.breadcrumb {
+  background-color: hsl(0, 0%, 100%);
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+
+  .breadcrumb-item {
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    a {
+      color: #007bff; /* Blue color for links */
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.active {
+      color: #6c757d; /* Grey color for active breadcrumb */
+    }
+  }
+}
+
+.book-management-container {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.book-management-table {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+#savebtn{
+  width: 120px;
+}
+.form-label{
+  font-weight: bolder;
+}
+#required{
+  color: red;
+}
+.d-inline-block {
+  inline-size: max-content;
+}
+/* Custom styles for book management form */
+
+

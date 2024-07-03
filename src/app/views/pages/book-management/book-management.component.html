@@ -1,0 +1,132 @@
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Book Catalog</li>
+  </ol>
+</nav>
+
+<!-- Main Content -->
+<div class="book-management-container">
+  <div class="book-list">
+    <div class="book-card">
+      <form id="bookform">
+        <div class="row g-3">
+          <!-- First Row -->
+          <div class="col-md-4">
+            <label for="title" class="form-label">Title<span id="required">*</span></label>
+            <input type="text" class="form-control" id="title" placeholder="Enter title" #title required>
+          </div>
+          <div class="col-md-4">
+            <label for="author" class="form-label">Author<span id="required">*</span></label>
+            <input type="text" class="form-control" id="author" placeholder="Enter author" #author required>
+          </div>
+          <div class="col-md-4">
+            <label for="isbn" class="form-label">ISBN<span id="required">*</span></label>
+            <input type="text" class="form-control" id="isbn" placeholder="Enter ISBN" #isbn required>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <!-- Second Row -->
+          <div class="col-md-4">
+            <label for="publishedYear" class="form-label">Published Year<span id="required">*</span></label>
+            <input type="date" class="form-control" id="publishedYear" placeholder="Enter published year" #publishyear required>
+          </div>
+          <div class="col-md-4">
+            <label for="genre" class="form-label">Genre<span id="required">*</span></label>
+            <input type="text" class="form-control" id="genre" placeholder="Enter genre" #genre required>
+          </div>
+          <div class="col-md-4">
+            <label for="copies" class="form-label">Total Copies<span id="required">*</span></label>
+            <input type="number" class="form-control" id="copies" placeholder="Enter total copies" #copies required>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <!-- Third Row -->
+          <div class="col-md-4">
+            <label for="availableCopies" class="form-label">Available Copies<span id="required">*</span></label>
+            <input type="number" class="form-control" id="availableCopies" placeholder="Enter available copies" #availablecopies required>
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>
+          <!-- Placeholder for another field -->
+        </div>
+        <div class="d-flex justify-content-end savebtn">
+          <button type="button" class="btn btn-primary" id="savebtn" (click)="saveBook(title.value,author.value,isbn.value,publishyear.value,genre.value,copies.value,availablecopies.value)" >Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<!-- Book List Table -->
+<div class="book-management-table">
+  <div class="book-card">
+    <div class="book-list-table mt-5">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="background-color:rgb(7, 154, 199);color:white">SL.No</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Title</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Author</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">ISBN</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Published Year</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Genre</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Copies</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Available Copies</th>
+            <th style="background-color:rgb(7, 154, 199);color:white">Action(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publishedYear | date:'dd-MM-yyyy' }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.copies }}</td>
+            <td>{{ book.availableCopies }}</td>
+            <td>
+              <div class="d-inline-block">
+                <button class="btn btn-primary btn-sm me-1">
+                  <i class="bi bi-pencil"></i> Edit
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="deleteBook(book.bookID)">
+                  <i class="bi bi-trash"></i> Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Simple Pagination Controls -->
+    <!-- <div class="pagination-controls">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item" (click)="previousPage()" [class.disabled]="pageIndex === 1">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" *ngFor="let page of totalPages" [class.active]="page === pageIndex">
+            <a class="page-link" href="#" (click)="goToPage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item" (click)="nextPage()" [class.disabled]="pageIndex === totalPages.length">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div> -->
+  </div>
+</div>
+
+
+

@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "trace": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*"
+      }
+    }
+  ]
+}
+
+
+DDL:- Data Defination language Ex: Create, Alter etc
+DML:- Data Manupulation Language Ex: Select , Delete , Insert etc
+DCL:-Data Control Language Ex: Grant (Who can access Select, Delete etc), Revoke etc
